@@ -36,9 +36,7 @@ A simple usage example:
                       top: 16.0,
                       bottom: 16.0,
                     ),
-                    child: new CircleIndicator(
-                      pagerController: controller,
-                      size: pageList.length,
+                    child: new CircleIndicator(controller, 3.0, Colors.white70, Colors.white)
                     ),
                   ),
                 ],
