@@ -6,6 +6,21 @@ A library for Dart developers. It is awesome.
 
 ## Installation
 
+1. Depend on it
+Add this to your package's pubspec.yaml file:
+
+       dependencies:
+         circle_indicator: "^0.0.1"
+2. Install it
+You can install packages from the command line:
+
+       $ pub get
+Alternatively, your editor might support 'pub get'. Check the docs for your editor to learn more.
+
+3. Import it
+Now in your Dart code, you can use:
+
+       import 'package:circle_indicator/circle_indicator.dart';
 
 
 

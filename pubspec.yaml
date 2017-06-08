@@ -1,8 +1,8 @@
 name: circle_indicator
 description: Small library that builds a circle indicator for the PageViewer that can be used on Android and iOS apps.
 version: 0.0.1
-#homepage: https://www.long1.eu
-#author: long1eu <home@long1.eu>
+homepage: https://www.long1.eu
+author: long1eu <home@long1.eu>
 
 environment:
   sdk: '>=1.20.1 <2.0.0'
