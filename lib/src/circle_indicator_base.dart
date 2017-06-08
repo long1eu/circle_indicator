@@ -6,6 +6,9 @@ class CircleIndicator extends StatefulWidget {
   ///The page controller attached to the PageViewer.
   final PageController pagerController;
 
+  ///The numbers of pages the PageViewer contains.
+  final int size;
+
   ///The radius of the selected dot.
   final double radius;
 
@@ -15,24 +18,22 @@ class CircleIndicator extends StatefulWidget {
   ///The color of the selected dots.
   final Color selectedColor;
 
-  CircleIndicator(this.pagerController, this.radius, this.baseColor,
+  CircleIndicator(this.pagerController, this.size, this.radius, this.baseColor,
       this.selectedColor);
 
   @override
   State<StatefulWidget> createState() =>
       new _CircleIndicatorState(
-          pagerController, radius, baseColor, selectedColor);
+          pagerController, size, radius, baseColor, selectedColor);
 }
 
 class _CircleIndicatorState extends State<CircleIndicator>
     with TickerProviderStateMixin {
   final PageController pagerController;
+  final int size;
   final double radius;
   final Color baseColor;
   final Color selectedColor;
-
-  ///The numbers of pages the PageViewer contains.
-  int size;
 
   int oldPage = 0;
   int page = 0;
@@ -41,8 +42,8 @@ class _CircleIndicatorState extends State<CircleIndicator>
 
   Row items;
 
-  _CircleIndicatorState(this.pagerController, this.radius, this.baseColor,
-      this.selectedColor) {
+  _CircleIndicatorState(this.pagerController, this.size, this.radius,
+      this.baseColor, this.selectedColor) {
     pagerController.addListener(animate);
     List<Container> icons = new List();
     for (int i = 0; i < size; i++) {
@@ -59,10 +60,6 @@ class _CircleIndicatorState extends State<CircleIndicator>
         ),
       ));
     }
-
-    size = pagerController.position.maxScrollExtent ~/
-        pagerController.position.viewportDimension;
-
 
     items = new Row(
       children: icons,

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.5
+
+- Request the page count in constructor
+
 ## 0.0.4
 
 - I won't say it again, this is embarrassing

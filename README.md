@@ -10,17 +10,20 @@ A library for Dart developers. It is awesome.
 Add this to your package's pubspec.yaml file:
 
        dependencies:
-         circle_indicator: "^0.0.4"
+         circle_indicator: "^0.0.5"
+         
 2. Install it
 You can install packages from the command line:
 
        $ pub get
+       
 Alternatively, your editor might support 'pub get'. Check the docs for your editor to learn more.
 
 3. Import it
 Now in your Dart code, you can use:
 
        import 'package:circle_indicator/circle_indicator.dart';
+
 
 
 
@@ -51,7 +54,8 @@ A simple usage example:
                       top: 16.0,
                       bottom: 16.0,
                     ),
-                    child: new CircleIndicator(controller, 3.0, Colors.white70, Colors.white)
+                    child: new CircleIndicator(controller, pageList.length, 
+                      3.0, Colors.white70, Colors.white)
                     ),
                   ),
                 ],
