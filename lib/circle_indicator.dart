@@ -7,3 +7,4 @@
 library circle_indicator;
 
 export 'src/circle_indicator_base.dart';
+export 'src/introduction_widget.dart';

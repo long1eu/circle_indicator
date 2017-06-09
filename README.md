@@ -10,7 +10,7 @@ A library for Dart developers. It is awesome.
 Add this to your package's pubspec.yaml file:
 
        dependencies:
-         circle_indicator: "^0.0.5"
+         circle_indicator: "^0.0.6"
          
 2. Install it
 You can install packages from the command line:
@@ -29,7 +29,7 @@ Now in your Dart code, you can use:
 
 ## Usage
 
-A simple usage example:
+A simple usage example for the CircleIndicator:
     
     final PageController controller = new PageController();
     
@@ -63,6 +63,48 @@ A simple usage example:
           ),
         );
       }
+      
+If you want to use the whole IntroductionWidget you can do it like so:
+
+    class StartPage extends StatelessWidget {
+    
+      @override
+      Widget build(BuildContext context) {
+        var pageList = <StartPageItem>[
+          new StartPageItem("assets/ic_info_01.png"),
+          new StartPageItem("assets/ic_info_02.png"),
+          new StartPageItem("assets/ic_info_03.png"),
+          new StartPageItem("assets/ic_info_04.png"),
+          new StartPageItem("assets/ic_info_05.png"),
+          new StartPageItem("assets/ic_info_06.png"),
+          new StartPageItem("assets/ic_info_07.png"),
+          new StartPageItem("assets/ic_info_08.png"),
+        ];
+    
+        return new Scaffold(
+          body: new IntroductionWidget(
+            pageList: pageList,
+            circleIndicator: new CircleIndicator.withIntroduction(
+                pageList.length, 3.0, Colors.white70, Colors.white),
+            onComplete: () => startApp(context),
+            onCompleteText: new Text("START",
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .body1
+                  .copyWith(
+                color: Colors.white,),
+            ),
+            backgroundColor: primaryColor,
+          ),
+        );
+      }
+    
+    
+      void startApp(BuildContext context) {
+        Navigator.popAndPushNamed(context, HomePage.routeName);
+      }
+    }
 
 ## Features and bugs
 

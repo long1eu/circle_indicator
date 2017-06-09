@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.6
+
+- Add an IntroductionWidget beside the CircleIndicator
+
 ## 0.0.5
 
 - Request the page count in constructor

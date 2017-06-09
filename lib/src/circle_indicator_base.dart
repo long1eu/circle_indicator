@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class CircleIndicator extends StatefulWidget {
   ///The page controller attached to the PageViewer.
-  final PageController pagerController;
+  PageController pagerController;
 
   ///The numbers of pages the PageViewer contains.
   final int size;
@@ -21,10 +21,17 @@ class CircleIndicator extends StatefulWidget {
   CircleIndicator(this.pagerController, this.size, this.radius, this.baseColor,
       this.selectedColor);
 
+  CircleIndicator.withIntroduction(this.size, this.radius, this.baseColor,
+      this.selectedColor);
+
   @override
   State<StatefulWidget> createState() =>
       new _CircleIndicatorState(
           pagerController, size, radius, baseColor, selectedColor);
+
+  static CircleIndicator get(CircleIndicator indicator, PageController pagerController){
+    return new CircleIndicator(pagerController, indicator.size, indicator.radius, indicator.baseColor, indicator.selectedColor);
+  }
 }
 
 class _CircleIndicatorState extends State<CircleIndicator>
@@ -47,7 +54,6 @@ class _CircleIndicatorState extends State<CircleIndicator>
     pagerController.addListener(animate);
     List<Container> icons = new List();
     for (int i = 0; i < size; i++) {
-      print(i.toString());
       icons.add(new Container(
         margin: new EdgeInsets.all(4.0),
         child: new _AnimatedCircleAvatar(
