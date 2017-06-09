@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.7
+
+- Now you have the possibility to add both left and right actions
+- Implement your own logic as to when to display the action widget
+
 ## 0.0.6
 
 - Add an IntroductionWidget beside the CircleIndicator

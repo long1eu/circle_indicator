@@ -10,7 +10,7 @@ A library for Dart developers. It is awesome.
 Add this to your package's pubspec.yaml file:
 
        dependencies:
-         circle_indicator: "^0.0.6"
+         circle_indicator: "^0.0.7"
          
 2. Install it
 You can install packages from the command line:
@@ -86,8 +86,8 @@ If you want to use the whole IntroductionWidget you can do it like so:
             pageList: pageList,
             circleIndicator: new CircleIndicator.withIntroduction(
                 pageList.length, 3.0, Colors.white70, Colors.white),
-            onComplete: () => startApp(context),
-            onCompleteText: new Text("START",
+            rightAction: () => startApp(context),
+            rightText: new Text("START",
               style: Theme
                   .of(context)
                   .textTheme
@@ -105,6 +105,40 @@ If you want to use the whole IntroductionWidget you can do it like so:
         Navigator.popAndPushNamed(context, HomePage.routeName);
       }
     }
+    
+You can add both left and right actions:
+
+      return new Scaffold(
+        body: new IntroductionWidget(
+          pageList: pageList,
+          circleIndicator: new CircleIndicator.withIntroduction(
+              pageList.length, 3.0, Colors.white70, Colors.white),
+          rightAction: () => startApp(context),
+          ///called every time the page changes with the page number
+          showRight: (page) => page == 5,
+          rightText: new Text("START",
+            style: Theme
+                .of(context)
+                .textTheme
+                .body1
+                .copyWith(
+              color: Colors.white,),
+          ),
+  
+          leftAction: () => startApp(context),
+          ///called every time the page changes with the page number
+          showLeft: (page) => true,
+          leftText: new Text("SKIP",
+            style: Theme
+                .of(context)
+                .textTheme
+                .body1
+                .copyWith(
+              color: Colors.white,),
+          ),
+          backgroundColor: primaryColor,
+        ),
+      );
 
 ## Features and bugs
 
