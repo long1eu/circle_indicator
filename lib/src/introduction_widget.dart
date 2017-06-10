@@ -7,10 +7,16 @@ typedef bool ShouldShow(int pageNumber);
 
 class IntroductionWidget extends StatefulWidget {
 
+  ///The list with the pages to display
   final List<Widget> pageList;
+
+  ///A custom background color
   final Color backgroundColor;
+
+  ///The indicator as you want it
   final CircleIndicator circleIndicator;
 
+  ///The action for each side
   final Function rightAction;
   final Text rightText;
   final ShouldShow showRight;
@@ -21,6 +27,7 @@ class IntroductionWidget extends StatefulWidget {
   IntroductionWidget({this.pageList, this.backgroundColor, this.circleIndicator,
     this.rightAction, this.rightText, this.showRight, this.leftAction,
     this.leftText, this.showLeft}) {
+
     assert((rightAction != null && rightText != null)
         ||
         (rightAction == null && rightText == null));
