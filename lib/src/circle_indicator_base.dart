@@ -41,9 +41,6 @@ class _CircleIndicatorState extends State<CircleIndicator>
     with TickerProviderStateMixin {
   final PageController pagerController;
   final int size;
-  final double radius;
-  final Color baseColor;
-  final Color selectedColor;
 
   int oldPage = 0;
   int page = 0;
@@ -52,10 +49,11 @@ class _CircleIndicatorState extends State<CircleIndicator>
 
   Row items;
 
-  _CircleIndicatorState(this.pagerController, this.size, this.radius,
-      this.baseColor, this.selectedColor) {
+  _CircleIndicatorState(this.pagerController, this.size, radius,
+      baseColor, selectedColor) {
     pagerController.addListener(animate);
     List<Container> icons = new List();
+
     for (int i = 0; i < size; i++) {
       icons.add(new Container(
         margin: new EdgeInsets.all(4.0),
@@ -64,7 +62,8 @@ class _CircleIndicatorState extends State<CircleIndicator>
             duration: new Duration(milliseconds: 100),
             vsync: this,
           ),
-          color: Colors.white,
+          baseColor: baseColor,
+          selectedColor: selectedColor,
           radius: radius,
         ),
       ));
@@ -128,23 +127,32 @@ class _CircleIndicatorState extends State<CircleIndicator>
 }
 
 
-class _AnimatedCircleAvatar extends Container {
+class _AnimatedCircleAvatar extends StatelessWidget {
 
   final AnimationController controller;
   final double radius;
+  final Color baseColor;
+  final Color selectedColor;
 
-  _AnimatedCircleAvatar({this.controller, this.radius, color})
-      : super(
-    decoration: new BoxDecoration(
-      shape: BoxShape.circle,
-      color: color,
-    ),
-    width: radius * 2,
-    height: radius * 2,
-  );
+  _AnimatedCircleAvatar({
+    Key key,
+    this.controller,
+    this.radius,
+    this.baseColor,
+    this.selectedColor
+    }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Container selctedCircle = new Container(
+      decoration: new BoxDecoration(
+        shape: BoxShape.circle,
+        color: selectedColor,
+      ),
+      width: radius * 2,
+      height: radius * 2
+    );
+
     return new Stack(
       alignment: FractionalOffset.center,
       children: <Widget>[
@@ -154,13 +162,13 @@ class _AnimatedCircleAvatar extends Container {
               curve: Curves.linear,
               reverseCurve: Curves.bounceOut
           ),
-          child: super.build(context),
+          child: selctedCircle,
         ),
         new Container(
           width: radius,
           height: radius,
           decoration: new BoxDecoration(
-            color: Colors.white70,
+            color: baseColor,
             shape: BoxShape.circle,
           ),
         ),
